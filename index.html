@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="本站提供简短平安夜的句子经典精选，收录适合发朋友圈、送祝福的经典平安夜文案，短小精悍，温馨感人。">
+    <meta name="keywords" content="简短平安夜的句子经典,平安夜祝福语,平安夜文案,圣诞节祝福">
+    <title>简短平安夜的句子经典 - 温馨祝福语精选与文案分享</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #D4AF37;
+            --primary-hover: #b59024;
+            --bg-color: #FDFBF7;
+            --card-bg: #FFFFFF;
+            --text-main: #2C3E50;
+            --text-secondary: #666666;
+            --accent-red: #E74C3C;
+            --accent-green: #27AE60;
+            --spacing-unit: 1rem;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--accent-red);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-red);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #FFF8F0 0%, #FFFFFF 100%);
+            padding: 4rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid #eee;
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary-color);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-red);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Quote Cards */
+        .quote-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .quote-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border-left: 4px solid transparent;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .quote-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-left-color: var(--primary-color);
+        }
+
+        .quote-icon {
+            font-size: 2rem;
+            color: #f0f0f0;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-family: serif;
+        }
+
+        .quote-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .action-btn {
+            cursor: pointer;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: color 0.2s;
+        }
+
+        .action-btn:hover {
+            color: var(--accent-red);
+        }
+
+        /* Categories */
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .cat-tag {
+            padding: 0.5rem 1.5rem;
+            background-color: #fff;
+            border: 1px solid #eee;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cat-tag:hover, .cat-tag.active {
+            background-color: var(--text-main);
+            color: #fff;
+            border-color: var(--text-main);
+        }
+
+        /* Usage Guide Section */
+        .guide-section {
+            background-color: #fff;
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 4rem;
+        }
+
+        .guide-content h3 {
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .guide-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .step-item {
+            text-align: center;
+        }
+
+        .step-num {
+            width: 40px;
+            height: 40px;
+            background-color: #FFF8F0;
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2C3E50;
+            color: #bdc3c7;
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            margin: 1.5rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            nav {
+                display: none; /* Simplified for mobile */
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .quote-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span>❄️</span> 平安夜祝福语
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#short">简短精选</a></li>
+                    <li><a href="#long">唯美长句</a></li>
+                    <li><a href="#guide">使用指南</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>简短平安夜的句子经典</h1>
+        <p>在这个充满爱与和平的日子里，用最精炼的文字传递最真挚的祝福。这里为您精选了各类简短、经典、温馨的平安夜文案。</p>
+        <div class="search-box">
+            <input type="text" placeholder="搜索平安夜祝福语..." id="searchInput">
+        </div>
+    </section>
+
+    <main>
+        <div class="section-title">
+            <h2>热门分类</h2>
+        </div>
+        <div class="categories">
+            <span class="cat-tag active" onclick="filterQuotes('all', this)">全部</span>
+            <span class="cat-tag" onclick="filterQuotes('love', this)">爱情告白</span>
+            <span class="cat-tag" onclick="filterQuotes('family', this)">家人团聚</span>
+            <span class="cat-tag" onclick="filterQuotes('friend', this)">朋友祝福</span>
+            <span class="cat-tag" onclick="filterQuotes('funny', this)">幽默搞怪</span>
+        </div>
+
+        <div class="section-title">
+            <h2>简短经典语录</h2>
+        </div>
+        
+        <section id="quote-container" class="quote-grid">
+            <!-- Cards will be injected by JS or hardcoded below -->
+            
+            <article class="quote-card" data-category="love">
+                <span class="quote-icon">“</span>
+                <p class="quote-text">愿有岁月可回首，且以深情共白头。平安夜快乐。</p>
+                <div class="quote-actions">
+                    <span class="action-btn" onclick="copyText(this)">复制文案</span>
+                </div>
+            </article>
+
+            <article class="quote-card" data-category="family">
+                <span class="quote-icon">“</span>
+                <p class="quote-text">家人闲坐，灯火可亲。平安夜，愿家人安康。</p>
+                <div class="quote-actions">
+                    <span class="action-btn" onclick="copyText(this)">复制文案</span>
+                </div>
+            </article>
+
+            <article class="quote-card" data-category="friend">
+                <span class="quote-icon">“</span>
+                <p class="quote-text">祝你平安，不止今夜，而是岁岁年年。</p>
+                <div class="quote-actions">
+                    <span class="action-btn" onclick="copyText(this)">复制文案</span>
+                </div>
+            </article>
+
+            <article class="quote-card" data-category="funny">
+                <span class="quote-icon">“</span>
+                <p class="quote-text">平安夜，如果你在吃火鸡，记得分我一口。</p>
+                <div class="quote-actions">
+                    <span class="action-btn" onclick="copyText(this)">复制文案</span>
+                </div>
+            </article>
+
+            <article class="quote-card" data-category="love">
+                <span class="quote-icon">“</span>
+                <p class="quote-text">Merry Christmas, my dear. 愿我的爱温暖你整个冬天。</p>
+                <div class="quote-actions">
+                    <span class="action-btn" onclick="copyText(this)">复制文案</span>
+                </div>
+            </article>
+
+            <article class="quote-card" data-category="friend">
+                <span class="quote-icon">“</span>
+                <p class="quote-text">圣诞快乐！愿你的烦恼像圣诞老人一样被送走。</p>
+                <div class="quote-actions">
+                    <span class="action-btn" onclick="copyText(this)">复制文案</span>
+                </div>
+            </article>
+        </section>
+
+        <div class="section-title">
+            <h2>如何使用这些句子</h2>
+        </div>
+
+        <section class="guide-section">
+            <div class="guide-content">
+                <h3>精选文案使用指南</h3>
+                <div class="guide-steps">
+                    <div class="step-item">
+                        <div class="step-num">1</div>
+                        <h4>选择场景</h4>
+                        <p>根据发送对象选择分类，如送给恋人、朋友或家人。</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">2</div>
+                        <h4>一键复制</h4>
+                        <p>点击卡片上的“复制文案”按钮，即可将句子存入剪贴板。</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">3</div>
+                        <h4>发送祝福</h4>
+                        <p>打开微信、短信或朋友圈，粘贴发送，让对方感受温暖。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <h3>平安夜祝福语大全</h3>
+            <div class="footer-links">
+                <a href="#">关于我们</a>
+                <a href="#">版权声明</a>
+                <a href="#">联系站长</a>
+            </div>
+            <p class="copyright">&copy; 2023 平安夜祝福语精选网. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的筛选功能
+        function filterQuotes(category, element) {
+            // 更新标签样式
+            document.querySelectorAll('.cat-tag').forEach(tag => tag.classList.remove('active'));
+            element.classList.add('active');
+
+            // 筛选卡片
+            const cards = document.querySelectorAll('.quote-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // 复制文本功能
+        function copyText(btn) {
+            const text = btn.previousElementSibling.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = btn.innerText;
+                btn.innerText = '已复制!';
+                btn.style.color = 'var(--accent-green)';
+                
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.color = '';
+                }, 2000);
+            }).catch(err => {
+                console.error('复制失败:', err);
+            });
+        }
+
+        // 搜索功能
+        document.getElementById('searchInput').addEventListener('keyup', function(e) {
+            const term = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.quote-card');
+            
+            cards.forEach(card => {
+                const text = card.querySelector('.quote-text').innerText.toLowerCase();
+                if (text.includes(term)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+          </html>
