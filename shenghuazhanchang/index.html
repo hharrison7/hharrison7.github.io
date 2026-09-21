@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生化战场-沉浸式末日生存策略与装备图鉴</title>
+    <meta name="description" content="生化战场提供最新的末日生存策略指南、变异体弱点分析、战术装备评测及安全撤离路线规划。探索丧尸、异种生物的生存法则，获取专业防护建议。">
+    <meta name="keywords" content="生化战场,末日生存,变异体,战术装备,撤离指南">
+    <style>
+        :root {
+            --primary: #d32f2f;
+            --primary-dark: #9a0007;
+            --accent: #ff6f00;
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --text-main: #e0e0e0;
+            --text-sub: #a0a0a0;
+            --border: #333;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 32px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border: 1px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--text-sub);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            font-size: 0.75rem;
+            border-radius: 2px;
+            background: rgba(211, 47, 47, 0.2);
+            color: #ff5252;
+            border: 1px solid rgba(211, 47, 47, 0.4);
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: var(--spacing-lg);
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary);
+        }
+
+        .search-box {
+            display: flex;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            padding: 8px 12px;
+            color: var(--text-main);
+            outline: none;
+            width: 200px;
+        }
+
+        .search-box button {
+            background: transparent;
+            border: none;
+            color: var(--text-sub);
+            padding: 0 12px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 600px;
+            background: linear-gradient(to bottom, rgba(18,18,18,0.3), var(--bg-dark)), 
+                        url('https://picsum.photos/seed/biohazard/1920/1080.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: var(--spacing-lg);
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-sub);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: var(--spacing-md);
+        }
+
+        .stat-item h3 {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        /* Section Styling */
+        section {
+            padding: var(--spacing-lg) 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            border-left: 4px solid var(--primary);
+            padding-left: var(--spacing-md);
+        }
+
+        .section-link {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Threat Level Grid */
+        .threat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .threat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+            position: relative;
+        }
+
+        .threat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .threat-img {
+            height: 160px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .threat-img::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to top, var(--bg-card), transparent);
+        }
+
+        .threat-level {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #000;
+            color: #fff;
+            padding: 4px 8px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 2px;
+        }
+
+        .threat-level.s-class { background: #ff0000; }
+        .threat-level.a-class { background: #ff6600; }
+        .threat-level.b-class { background: #ffd700; }
+
+        .threat-info {
+            padding: var(--spacing-md);
+        }
+
+        .threat-info h3 {
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.25rem;
+        }
+
+        .threat-info p {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Survival Guide List */
+        .guide-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .guide-item {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: flex-start;
+            background: var(--bg-card);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .guide-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .guide-content h4 {
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.1rem;
+        }
+
+        .guide-content p {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+
+        /* Equipment Table */
+        .equipment-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .equipment-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        .equipment-table th, .equipment-table td {
+            text-align: left;
+            padding: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .equipment-table th {
+            background-color: var(--bg-card);
+            color: var(--text-sub);
+            font-weight: 600;
+        }
+
+        .equipment-table tr:hover {
+            background-color: rgba(255,255,255,0.02);
+        }
+
+        .weapon-type {
+            display: inline-block;
+            padding: 2px 6px;
+            font-size: 0.75rem;
+            border-radius: 2px;
+            margin-right: 6px;
+        }
+
+        .type-firearm { background: #3d3d3d; color: #fff; }
+        .type-melee { background: #5d4037; color: #fff; }
+        .type-explosive { background: #4e342e; color: #fff; }
+
+        /* FAQ Section */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+        }
+
+        .faq-item h4 {
+            color: var(--accent);
+            margin-bottom: var(--spacing-sm);
+            font-size: 1rem;
+        }
+
+        .faq-item p {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            padding: var(--spacing-lg) 0;
+            border-top: 1px solid var(--border);
+            margin-top: var(--spacing-lg);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-col h4 {
+            color: var(--text-main);
+            margin-bottom: var(--spacing-md);
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--border);
+            color: #555;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 10px 0;
+                gap: 10px;
+            }
+            
+            nav ul {
+                gap: var(--spacing-md);
+                font-size: 0.85rem;
+            }
+
+            .search-box {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                flex-wrap: wrap;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <a href="#" class="logo">BIO<span>HAZARD</span></a>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#threats">威胁等级</a></li>
+                <li><a href="#survival">生存指南</a></li>
+                <li><a href="#equipment">战术装备</a></li>
+                <li><a href="#faq">常见问题</a></li>
+            </ul>
+        </nav>
+        <div class="search-box">
+            <input type="text" placeholder="搜索战术物资或变异体...">
+            <button>🔍</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>生化战场：末日生存百科</h1>
+            <p>全面解析病毒爆发后的生存法则、变异体弱点分析及战术物资配置。在混乱中建立秩序，在绝境中寻找生机。</p>
+            <div class="hero-btns">
+                <a href="#threats" class="btn btn-primary">查看威胁情报</a>
+                <a href="#survival" class="btn btn-outline">下载生存手册</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>98%</h3>
+                    <p>存活率提升方案</p>
+                </div>
+                <div class="stat-item">
+                    <h3>120+</h3>
+                    <p>变异体图鉴</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>实时撤离监控</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Threat Level Section -->
+    <section id="threats">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">当前威胁等级与变异体</h2>
+                <a href="#" class="section-link">查看完整图鉴 &rarr;</a>
+            </div>
+            
+            <div class="threat-grid">
+                <!-- Threat Card 1 -->
+                <article class="threat-card">
+                    <div class="threat-img" style="background-image: url('https://picsum.photos/seed/zombie1/400/300.jpg');">
+                        <span class="threat-level s-class">S级</span>
+                    </div>
+                    <div class="threat-info">
+                        <h3>暴君级·泰坦</h3>
+                        <p>极高攻击力，极慢速度。对爆炸物有抗性，建议使用大口径狙击枪进行远程打击。</p>
+                        <div class="badge">群体压制</div>
+                        <div class="badge">高防御</div>
+                    </div>
+                </article>
+
+                <!-- Threat Card 2 -->
+                <article class="threat-card">
+                    <div class="threat-img" style="background-image: url('https://picsum.photos/seed/fastzombie/400/300.jpg');">
+                        <span class="threat-level a-class">A级</span>
+                    </div>
+                    <div class="threat-info">
+                        <h3>疾行者·舔食者</h3>
+                        <p>拥有极快的移动速度和攀爬能力，主要出现在天花板和通风管道。</p>
+                        <div class="badge">高机动</div>
+                        <div class="badge">近战威胁</div>
+                    </div>
+                </article>
+
+                <!-- Threat Card 3 -->
+                <article class="threat-card">
+                    <div class="threat-img" style="background-image: url('https://picsum.photos/seed/infected/400/300.jpg');">
+                        <span class="threat-level b-class">B级</span>
+                    </div>
+                    <div class="threat-info">
+                        <h3>普通感染者</h3>
+                        <p>数量庞大，行动迟缓。虽然威胁较低，但成群结队时仍具有致命危险。</p>
+                        <div class="badge">数量众多</div>
+                        <div class="badge">易对付</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Survival Guide Section -->
+    <section id="survival" style="background-color: #161616;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">核心生存策略</h2>
+            </div>
+
+            <div class="guide-list">
+                <div class="guide-item">
+                    <div class="guide-icon">🛡️</div>
+                    <div class="guide-content">
+                        <h4>防护装备佩戴规范</h4>
+                        <p>在进入高危区域前，必须确保防毒面具滤毒罐有效期大于72小时，且防弹衣需覆盖颈部和腹部关键部位。切勿裸露皮肤接触不明液体。</p>
+                    </div>
+                </div>
+
+                <div class="guide-item">
+                    <div class="guide-icon">🔦</div>
+                    <div class="guide-content">
+                        <h4>环境侦测与避难所</h4>
+                        <p>利用热成像仪识别潜伏在阴影中的变异体。选择具有双层防爆门和独立通风系统的建筑作为临时避难所，定期检查水源安全性。</p>
+                    </div>
+                </div>
+
+                <div class="guide-item">
+                    <div class="guide-icon">🧪</div>
+                    <div class="guide-content">
+                        <h4>医疗物资管理</h4>
+                        <p>抗生素和止血带是生存必需品。建立物资台账，优先消耗近效期药物。面对大面积感染，需使用含氯消毒剂对伤口进行初步处理。</p>
+                    </div>
+                </div>
+
+                <div class="guide-item">
+                    <div class="guide-icon">🚨</div>
+                    <div class="guide-content">
+                        <h4>撤离信号与通讯</h4>
+                        <p>建立无线电静默规则，仅在必要时使用加密频道。撤离点通常设置在开阔地带的制高点，通过三色信号弹进行联络。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment Section -->
+    <section id="equipment">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">推荐战术装备</h2>
+                <a href="#" class="section-link">查看完整武器库 &rarr;</a>
+            </div>
+
+            <div class="equipment-table-wrapper">
+                <table class="equipment-table">
+                    <thead>
+                        <tr>
+                            <th>装备名称</th>
+                            <th>类型</th>
+                            <th>有效射程</th>
+                            <th>特殊效果</th>
+                            <th>推荐指数</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>MP5SD冲锋枪</td>
+                            <td><span class="weapon-type type-firearm">枪械</span>冲锋枪</td>
+                            <td>50m</td>
+                            <td>低后座力，适合近距离交火</td>
+                            <td>⭐⭐⭐⭐</td>
+                        </tr>
+                        <tr>
+                            <td>战术砍刀</td>
+                            <td><span class="weapon-type type-melee">近战</span>冷兵器</td>
+                            <td>0m</td>
+                            <td>无需弹药，静音，可破坏障碍物</td>
+                            <td>⭐⭐⭐⭐⭐</td>
+                        </tr>
+                        <tr>
+                            <td>RPG-7火箭筒</td>
+                            <td><span class="weapon-type type-explosive">爆炸</span>重武器</td>
+                            <td>200m</td>
+                            <td>对S级生物有显著伤害加成</td>
+                            <td>⭐⭐⭐</td>
+                        </tr>
+                        <tr>
+                            <td>防毒面具MK-IV</td>
+                            <td><span class="weapon-type type-firearm">防护</span>个人装备</td>
+                            <td>N/A</td>
+                            <td>过滤率达99.9%，防酸液腐蚀</td>
+                            <td>⭐⭐⭐⭐⭐</td>
+                        </tr>
+                        <tr>
+                            <td>燃烧瓶</td>
+                            <td><span class="weapon-type type-explosive">投掷</span>消耗品</td>
+                            <td>15m</td>
+                            <td>造成持续范围伤害，阻止尸潮</td>
+                            <td>⭐⭐⭐⭐</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" style="background-color: #161616;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">常见问题 (FAQ)</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>Q: 生化战场中遇到感染者时应该往哪里跑？</h4>
+                    <p>A: 首先寻找坚固的掩体。如果是高速感染者（舔食者），应避免直线奔跑，利用复杂地形（楼梯、管道）进行周旋，切勿跳楼。</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Q: 装备了防弹衣是否就能免疫所有攻击？</h4>
+                    <p>A: 不是。生化战场中的攻击多为冲撞和撕咬，防弹衣主要防弹片和流弹。颈部、关节等部位仍需额外防护。</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Q: 遇到大规模尸潮如何生存？</h4>
+                    <p>A: 保持冷静，寻找高处或狭窄通道。利用爆炸物制造障碍物阻挡尸潮，切勿在开阔地带与尸潮正面硬刚。</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Q: 饮用水还能饮用吗？</h4>
+                    <p>A: 强烈不建议直接饮用。应煮沸至少15分钟，或使用经过认证的净水片/滤水器，以防水源被病毒污染。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>BIOHAZARD</h4>
+                <p style="color: #666; font-size: 0.9rem; line-height: 1.5;">
+                    致力于为幸存者提供最权威的生化战场生存指南与战术分析。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>快速导航</h4>
+                <ul>
+                    <li><a href="#">威胁等级图鉴</a></li>
+                    <li><a href="#">物资补给站</a></li>
+                    <li><a href="#">撤离点分布图</a></li>
+                    <li><a href="#">社区论坛</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>资源下载</h4>
+                <ul>
+                    <li><a href="#">生存手册 v2.0</a></li>
+                    <li><a href="#">地图标记工具</a></li>
+                    <li><a href="#">通讯频段表</a></li>
+                    <li><a href="#">急救教程视频</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>联系我们</h4>
+                <ul>
+                    <li><a href="#">加入救援队</a></li>
+                    <li><a href="#">提交情报</a></li>
+                    <li><a href="#">合作洽谈</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 生化战场生存指南. All rights reserved. 本站数据仅供战术参考，请勿轻信非官方撤离路线。</p>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+  </html>
