@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="山东中医药专科门户，提供山东中医药高等专科学校招生信息、专业介绍、校园新闻、招生就业及中医文化科普，是了解山东中医药教育的重要窗口。">
+    <meta name="keywords" content="山东中医药专科,山东中医药高等专科学校,中医专业,山东卫校,中医药教育,中医护理,针灸推拿">
+    <title>山东中医药专科-招生就业与校园资讯平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #5e7d49; /* 中医绿 */
+            --primary-dark: #3f5333;
+            --accent-color: #d4a017; /* 金色 */
+            --text-main: #333333;
+            --text-light: #666666;
+            --bg-light: #f9f9f9;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --container-width: 1200px;
+            --spacing-unit: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* 顶部通栏 */
+        .top-bar {
+            background-color: #f0f2f5;
+            font-size: 13px;
+            color: var(--text-light);
+            padding: 8px 0;
+            border-bottom: 1px solid #e1e4e8;
+        }
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .top-bar a:hover {
+            color: var(--primary-color);
+        }
+
+        /* 头部 */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+        .logo span {
+            font-size: 16px;
+            font-weight: normal;
+            margin-left: 8px;
+            color: var(--text-light);
+        }
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-menu a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .search-box {
+            display: flex;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .search-box input {
+            border: none;
+            padding: 8px 15px;
+            outline: none;
+            width: 200px;
+        }
+
+        .search-box button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 0 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .search-box button:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #8fb554 100%);
+            color: var(--white);
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            flex: 1;
+            padding-right: 40px;
+        }
+
+        .hero-text h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--white);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            max-width: 500px;
+        }
+
+        /* 核心栏目 */
+        .features {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 28px;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        .section-title .line {
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 0 auto;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border-top: 4px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--accent-color);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* 招生动态与新闻 */
+        .news-section {
+            padding: 60px 0;
+            background-color: var(--white);
+        }
+
+        .news-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .news-list h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 15px;
+        }
+
+        .news-item {
+            display: flex;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .news-date {
+            background-color: #f0f2f5;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            min-width: 70px;
+            margin-right: 20px;
+        }
+
+        .news-date .day {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .news-date .month {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .news-content h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .news-content h4:hover {
+            color: var(--primary-color);
+        }
+
+        .news-content p {
+            font-size: 14px;
+            color: var(--text-light);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .sidebar h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .hot-list li {
+            border-bottom: 1px dashed #eee;
+            padding: 12px 0;
+        }
+
+        .hot-list li a {
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        .hot-list li a:hover {
+            color: var(--accent-color);
+        }
+
+        .hot-list li span {
+            float: right;
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* 专业介绍 */
+        .majors-section {
+            padding: 60px 0;
+            background-color: #f4f6f3;
+        }
+
+        .majors-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .major-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .major-card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+
+        .major-img {
+            height: 180px;
+            background-color: #ddd;
+            position: relative;
+        }
+        
+        .major-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .major-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(0,0,0,0.6);
+            color: var(--white);
+            padding: 4px 10px;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+
+        .major-info {
+            padding: 25px;
+        }
+
+        .major-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+
+        .major-info p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .major-link {
+            display: inline-block;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .major-link::after {
+            content: '→';
+            margin-left: 5px;
+            transition: margin-left 0.3s;
+        }
+
+        .major-link:hover::after {
+            margin-left: 10px;
+        }
+
+        /* 校园风采 */
+        .gallery-section {
+            padding: 60px 0;
+            background-color: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            height: 200px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 15px;
+            color: var(--white);
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* 常见问题 */
+        .faq-section {
+            padding: 60px 0;
+            background-color: #f9f9f9;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 15px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--white);
+        }
+
+        .faq-question:hover {
+            background-color: #f1f1f1;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 20px;
+            color: var(--primary-color);
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #fcfcfc;
+            padding: 0 20px;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .faq-answer p {
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #2c3e50;
+            color: #bdc3c7;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-col p {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: #bdc3c7;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .news-container {
+                grid-template-columns: 1fr;
+            }
+            .majors-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none; /* 移动端简化，实际项目需做汉堡菜单 */
+            }
+            .header-inner {
+                flex-wrap: wrap;
+            }
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .hero-text {
+                padding-right: 0;
+                margin-top: 30px;
+            }
+            .hero-text p {
+                margin: 0 auto 30px;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .majors-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .search-box {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部信息栏 -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-left">
+                <span>欢迎访问山东中医药高等专科学校官方网站！</span>
+            </div>
+            <div class="top-right">
+                <a href="#">招生办电话</a> | <a href="#">校园地图</a> | <a href="#">教师入口</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 头部导航 -->
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <div class="logo-icon">中</div>
+                山东中医药专科
+                <span>SHANDONG TCM</span>
+            </a>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">学校概况</a></li>
+                    <li><a href="#">专业设置</a></li>
+                    <li><a href="#">招生信息</a></li>
+                    <li><a href="#">教学科研</a></li>
+                    <li><a href="#">校园文化</a></li>
+                    <li><a href="#">就业指导</a></li>
+                </ul>
+            </nav>
+
+            <div class="search-box">
+                <input type="text" placeholder="搜索专业、新闻...">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero 区域 -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>传承岐黄薪火，弘扬国粹精华</h1>
+                <p>山东中医药高等专科学校致力于培养高素质技能型中医药人才，依托齐鲁中医药文化资源，打造特色鲜明的中医药教育基地。</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary">2024年招生简章</a>
+                    <a href="#" class="btn btn-outline">在线咨询</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://picsum.photos/seed/tcm_hero/500/350" alt="中医药校园风光">
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心栏目 -->
+    <section class="features">
+        <div class="container">
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎓</div>
+                    <h3>专科教育</h3>
+                    <p>国家骨干高职院校，全日制三年制专科</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌿</div>
+                    <h3>特色专业</h3>
+                    <p>针灸推拿、中药学、中医康复技术</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>名师荟萃</h3>
+                    <p>双师型教师队伍，省级教学团队</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏥</div>
+                    <h3>实习基地</h3>
+                    <p>遍布全省的附属医院及实习医院</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 新闻动态 -->
+    <section class="news-section">
+        <div class="container news-container">
+            <div class="news-list">
+                <h3>最新动态</h3>
+                
+                <article class="news-item">
+                    <div class="news-date">
+                        <div class="day">15</div>
+                        <div class="month">10月</div>
+                    </div>
+                    <div class="news-content">
+                        <h4>我校举办“中医药文化进社区”义诊活动</h4>
+                        <p>为弘扬中医药文化，提升社区居民健康意识，我校针灸推拿学院师生走进社区，开展免费义诊、健康咨询及养生知识普及活动。</p>
+                    </div>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-date">
+                        <div class="day">12</div>
+                        <div class="month">10月</div>
+                    </div>
+                    <div class="news-content">
+                        <h4>关于2024年单独招生考试报名的通知</h4>
+                        <p>根据山东省教育厅要求，现将2024年单独招生考试报名流程、时间安排及相关政策进行详细说明，请广大考生密切关注。</p>
+                    </div>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-date">
+                        <div class="day">08</div>
+                        <div class="month">10月</div>
+                    </div>
+                    <div class="news-content">
+                        <h4>我校在全省职业院校技能大赛中斩获佳绩</h4>
+                        <p>在刚刚结束的2023年山东省职业院校技能大赛中，我校代表队凭借扎实的专业技能和稳定的现场发挥，获得多项一等奖。</p>
+                    </div>
+                </article>
+            </div>
+
+            <aside class="sidebar">
+                <h3>热门专题</h3>
+                <ul class="hot-list">
+                    <li>
+                        <a href="#">2024年单招报考指南</a>
+                        <span>1.2w</span>
+                    </li>
+                    <li>
+                        <a href="#">校园开放日预约</a>
+                        <span>8560</span>
+                    </li>
+                    <li>
+                        <a href="#">国家奖学金评选公示</a>
+                        <span>6300</span>
+                    </li>
+                    <li>
+                        <a href="#">中药标本馆参观预约</a>
+                        <span>5200</span>
+                    </li>
+                    <li>
+                        <a href="#">毕业生就业质量报告</a>
+                        <span>4800</span>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+    </section>
+
+    <!-- 重点专业介绍 -->
+    <section class="majors-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>王牌专业推荐</h2>
+                <div class="line"></div>
+            </div>
+            
+            <div class="majors-grid">
+                <div class="major-card">
+                    <div class="major-img">
+                        <img src="https://picsum.photos/seed/acupuncture/400/250" alt="针灸推拿专业">
+                        <span class="major-tag">省级特色专业</span>
+                    </div>
+                    <div class="major-info">
+                        <h3>针灸推拿</h3>
+                        <p>依托学校百年中医积淀，培养掌握针灸推拿基本理论和临床技能，能在各级医疗卫生机构从事针灸推拿工作的应用型技术人才。</p>
+                        <a href="#" class="major-link">查看详情</a>
+                    </div>
+                </div>
+
+                <div class="major-card">
+                    <div class="major-img">
+                        <img src="https://picsum.photos/seed/materia/400/250" alt="中药学专业">
+                        <span class="major-tag">国家级骨干专业</span>
+                    </div>
+                    <div class="major-info">
+                        <h3>中药学</h3>
+                        <p>系统学习中药化学、中药炮制、中药制剂等知识，培养具备中药鉴定、质量评价及合理用药能力的高素质技能型人才。</p>
+                        <a href="#" class="major-link">查看详情</a>
+                    </div>
+                </div>
+
+                <div class="major-card">
+                    <div class="major-img">
+                        <img src="https://picsum.photos/seed/rehab/400/250" alt="中医康复技术">
+                        <span class="major-tag">热门就业方向</span>
+                    </div>
+                    <div class="major-info">
+                        <h3>中医康复技术</h3>
+                        <p>结合传统中医康复与现代康复理念，培养能熟练运用中医康复技术治疗常见慢性病、功能康复的专业人才。</p>
+                        <a href="#" class="major-link">查看详情</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 校园风采 -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>校园风采</h2>
+                <div class="line"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/campus1/300/200" alt="图书馆">
+                    <div class="gallery-overlay">现代化图书馆</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/campus2/300/200" alt="教学楼">
+                    <div class="gallery-overlay">实训教学楼</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/campus3/300/200" alt="实训室">
+                    <div class="gallery-overlay">中药鉴定实验室</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/campus4/300/200" alt="操场">
+                    <div class="gallery-overlay">标准田径场</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 FAQ -->
+    <section class="faq-section">
+        <div class="container faq-container">
+            <div class="section-title">
+                <h2>常见问题解答</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">山东中医药专科学校的录取分数线是多少？</div>
+                <div class="faq-answer">
+                    <p>我校录取分数线每年根据山东省教育考试院公布的招生计划和考生报考情况而定。建议您关注学校官网发布的历年录取数据或直接咨询招生办公室。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">学校有哪些奖学金政策？</div>
+                <div class="faq-answer">
+                    <p>学校设有国家奖学金、国家励志奖学金、省政府奖学金以及学校奖学金等多种奖项，对品学兼优的学生给予奖励，家庭经济困难学生可申请国家助学金。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">毕业生就业情况如何？</div>
+                <div class="faq-answer">
+                    <p>依托良好的行业背景和就业网络，我校毕业生就业率一直保持在较高水平，主要就业去向为各级医院、社区卫生服务中心、医药公司及养生保健机构。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">学校宿舍条件怎么样？</div>
+                <div class="faq-answer">
+                    <p>学校宿舍为标准化公寓，配备空调、热水器、独立卫生间和宽带网络，环境整洁舒适，管理规范，满足学生的日常生活需求。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <p>山东中医药高等专科学校是山东省人民政府举办的全日制普通高等职业院校，是国家中医药管理局与山东省人民政府共建高校。</p>
+                    <p>地址：山东省烟台市莱山区滨海中路201号</p>
+                    <p>邮编：264500</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">学校概况</a></li>
+                        <li><a href="#">机构设置</a></li>
+                        <li><a href="#">规章制度</a></li>
+                        <li><a href="#">信息公开</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>招生服务</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">招生简章</a></li>
+                        <li><a href="#">历年分数</a></li>
+                        <li><a href="#">志愿填报</a></li>
+                        <li><a href="#">咨询热线</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系我们</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">校长信箱</a></li>
+                        <li><a href="#">纪检监察</a></li>
+                        <li><a href="#">人才招聘</a></li>
+                        <li><a href="#">友情链接</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 山东中医药高等专科学校 版权所有 | 鲁ICP备XXXXXXXX号</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的 FAQ 手风琴交互
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // 关闭其他打开的项
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                            otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                        }
+                    });
+
+                    // 切换当前项
+                    item.classList.toggle('active');
+                    const answer = item.querySelector('.faq-answer');
+                    if (item.classList.contains('active')) {
+                        answer.style.maxHeight = answer.scrollHeight + "px";
+                    } else {
+                        answer.style.maxHeight = null;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+  </html>
