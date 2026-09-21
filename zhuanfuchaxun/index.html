@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="转服查询 - 快速查询游戏角色跨服转移状态、服务器列表及转服规则。提供全网主流网游转服工具与实时数据监控。">
+    <meta name="keywords" content="转服查询,游戏转服,跨服转移,服务器查询,角色迁移">
+    <title>转服查询 - 全网游戏服务器状态与转移工具</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --primary-hover: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-sub: #64748b;
+            --border-color: #e2e8f0;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-sub);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-sub);
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        /* Search Section */
+        .search-box {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .search-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .input-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .input-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-sub);
+        }
+
+        select, input[type="text"] {
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            width: 100%;
+            background-color: #fff;
+            transition: border-color 0.2s;
+        }
+
+        select:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            position: relative;
+            padding-left: 16px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 24px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* Game Grid */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .game-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .game-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+
+        .game-icon {
+            width: 100%;
+            height: 140px;
+            background-color: #e2e8f0;
+            object-fit: cover;
+        }
+
+        .game-info {
+            padding: 20px;
+        }
+
+        .game-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .server-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .status-dot.online { background-color: var(--success-color); }
+        .status-dot.maintenance { background-color: var(--warning-color); }
+
+        /* Rules Section */
+        .rules-section {
+            background-color: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+        }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 24px;
+        }
+
+        .rule-item {
+            display: flex;
+            gap: 16px;
+        }
+
+        .rule-icon {
+            width: 48px;
+            height: 48px;
+            background-color: #eff6ff;
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+
+        .rule-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .rule-content p {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            margin-bottom: 12px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .faq-question:hover {
+            background-color: #f8fafc;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-sub);
+            display: none;
+            border-top: 1px solid var(--border-color);
+            padding-top: 16px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        .faq-icon {
+            transition: transform 0.2s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e293b;
+            color: #94a3b8;
+            padding: 48px 0 24px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            max-width: 300px;
+            font-size: 0.9rem;
+        }
+
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 24px;
+            border-top: 1px solid #334155;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 16px 0;
+                gap: 16px;
+            }
+
+            .header-actions {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .search-row {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                    <path d="M3 3v5h5"></path>
+                    <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path>
+                    <path d="M16 21h5v-5"></path>
+                </svg>
+                <span>转服查询</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">热门游戏</a></li>
+                    <li><a href="#">转移规则</a></li>
+                    <li><a href="#">帮助中心</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="btn btn-outline">登录</button>
+                <button class="btn btn-primary">立即查询</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>跨服转移，一键连接</h1>
+            <p>实时监控全网主流网游服务器状态，提供精准的转服数据查询与转移工具，助您无缝切换游戏环境。</p>
+            
+            <div class="search-box">
+                <div class="input-group">
+                    <label>选择游戏</label>
+                    <select id="gameSelect">
+                        <option value="" disabled selected>请选择游戏...</option>
+                        <option value="aion">永恒之塔</option>
+                        <option value="dnf">地下城与勇士</option>
+                        <option value="wow">魔兽世界</option>
+                        <option value="ff14">最终幻想14</option>
+                        <option value="dota2">DOTA2</option>
+                        <option value="genshin">原神</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>服务器名称</label>
+                    <input type="text" placeholder="输入服务器名称或编号">
+                </div>
+                <button class="btn btn-primary" style="width: 100%;">开始查询</button>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- Game Categories -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">热门查询游戏</h2>
+                <a href="#" class="btn btn-outline">查看全部</a>
+            </div>
+            
+            <div class="game-grid">
+                <article class="game-card">
+                    <img src="https://picsum.photos/seed/aion/400/200" alt="永恒之塔" class="game-icon">
+                    <div class="game-info">
+                        <h3 class="game-name">永恒之塔</h3>
+                        <div class="server-status">
+                            <span class="status-dot online"></span>
+                            <span>全区服正常</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="game-card">
+                    <img src="https://picsum.photos/seed/dnf/400/200" alt="地下城与勇士" class="game-icon">
+                    <div class="game-info">
+                        <h3 class="game-name">地下城与勇士</h3>
+                        <div class="server-status">
+                            <span class="status-dot online"></span>
+                            <span>全服稳定运行</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="game-card">
+                    <img src="https://picsum.photos/seed/wow/400/200" alt="魔兽世界" class="game-icon">
+                    <div class="game-info">
+                        <h3 class="game-name">魔兽世界</h3>
+                        <div class="server-status">
+                            <span class="status-dot online"></span>
+                            <span>国服/台服可转</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="game-card">
+                    <img src="https://picsum.photos/seed/ff14/400/200" alt="最终幻想14" class="game-icon">
+                    <div class="game-info">
+                        <h3 class="game-name">最终幻想14</h3>
+                        <div class="server-status">
+                            <span class="status-dot maintenance"></span>
+                            <span>即将维护</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Transfer Rules -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">转服规则指南</h2>
+            </div>
+            
+            <div class="rules-section">
+                <div class="rules-grid">
+                    <div class="rule-item">
+                        <div class="rule-icon">1</div>
+                        <div class="rule-content">
+                            <h3>确认目标服务器</h3>
+                            <p>查询目标服务器的当前人数、负载情况及开放转移时间，避免进入拥挤或维护中的服务器。</p>
+                        </div>
+                    </div>
+                    <div class="rule-item">
+                        <div class="rule-icon">2</div>
+                        <div class="rule-content">
+                            <h3>资产转移限制</h3>
+                            <p>注意游戏内装备、金币、宠物等道具的转移限制条件，部分游戏仅支持转移角色或等级。</p>
+                        </div>
+                    </div>
+                    <div class="rule-item">
+                        <div class="rule-icon">3</div>
+                        <div class="game-content">
+                            <h3>冷却与手续费</h3>
+                            <p>了解角色转移后的冷却期（通常为90天）以及可能的转移手续费，合理规划转移时间。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-section">
+            <div class="section-header">
+                <h2 class="section-title">常见问题 (FAQ)</h2>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    转服后还能转回来吗？
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <p>根据大多数游戏的规则，角色转移后通常有90天至180天的冷却期，期间无法再次进行转服操作。具体冷却时间请参考您所玩游戏的官方公告。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    转服会影响我的公会吗？
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <p>角色转移后，您将不再属于原服务器的公会。如果您是公会会长，请提前安排好公会成员的变动或公会解散事宜。公会成员无法跟随角色一同转移。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    查询显示服务器维护，还能转吗？
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <p>服务器维护期间通常无法进行转服操作。请等待服务器维护完成并重新开放后，再进行查询和转移操作。建议在维护开始前完成查询。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>转服查询</h3>
+                    <p>提供全网最准确、最及时的游戏服务器状态查询与转移工具，致力于为玩家提供便捷的跨服游戏体验。</p>
+                </div>
+                <div class="footer-links">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">热门游戏</a></li>
+                        <li><a href="#">转移规则</a></li>
+                        <li><a href="#">API接口</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>帮助支持</h4>
+                    <ul>
+                        <li><a href="#">联系客服</a></li>
+                        <li><a href="#">用户协议</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 转服查询工具. All rights reserved. 本站内容仅供参考，游戏数据以官方为准。
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle Logic
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+
+        // Simple Form Interaction
+        const searchBtn = document.querySelector('.btn-primary');
+        searchBtn.addEventListener('click', () => {
+            const gameSelect = document.getElementById('gameSelect');
+            const serverInput = document.querySelector('input[type="text"]');
+            
+            if (!gameSelect.value || !serverInput.value) {
+                alert('请先选择游戏并输入服务器名称');
+                return;
+            }
+            
+            // Simulate search process
+            const originalText = searchBtn.innerText;
+            searchBtn.innerText = '查询中...';
+            searchBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert(`查询成功！\n游戏：${gameSelect.options[gameSelect.selectedIndex].text}\n服务器：${serverInput.value}\n状态：正常`);
+                searchBtn.innerText = originalText;
+                searchBtn.disabled = false;
+            }, 800);
+        });
+    </script>
+</body>
+</html>
